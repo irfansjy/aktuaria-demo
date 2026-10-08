@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aktuaria AI — Your AI Actuarial Exam Assistant</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,Arial,sans-serif;color:#172033;background:#fff;line-height:1.6}
+.container{max-width:1080px;margin:auto;padding:0 24px}
+header{padding:22px 0;border-bottom:1px solid #edf0f4}
+.nav{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:22px;font-weight:800;color:#1261d6}
+.hero{text-align:center;padding:76px 20px 65px;background:linear-gradient(180deg,#fff,#f7faff)}
+.avatar{width:76px;height:76px;margin:0 auto 18px;border-radius:22px;background:#1261d6;color:white;display:grid;place-items:center;font-size:32px;font-weight:800;box-shadow:0 12px 30px #1261d625}
+h1{font-size:clamp(38px,7vw,64px);line-height:1.05;letter-spacing:-2px;margin-bottom:18px}
+.hero p{max-width:650px;margin:auto;color:#5d6878;font-size:18px}
+.badge{display:inline-block;margin-top:24px;padding:8px 15px;border:1px solid #b9e5c5;border-radius:30px;background:#f1fff4;color:#207a38;font-size:14px;font-weight:700}
+section{padding:70px 0}
+.section-title{text-align:center;margin-bottom:36px}
+.section-title h2{font-size:32px;margin-bottom:8px}
+.section-title p{color:#697586}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{border:1px solid #e4e8ee;border-radius:18px;padding:28px;background:#fff;box-shadow:0 8px 30px #15233d08}
+.card h3{margin-bottom:18px;font-size:21px}
+.chaos{background:#fffafa;border-color:#f1dddd}
+.solution{background:#f8fbff;border-color:#dce9fa}
+ul{list-style:none}
+li{margin:12px 0;padding-left:24px;position:relative}
+li:before{content:"✓";position:absolute;left:0;font-weight:bold;color:#1261d6}
+.chaos li:before{content:"×";color:#d9534f}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feature{padding:26px;border:1px solid #e5e9ef;border-radius:18px;background:#fff}
+.icon{font-size:27px;margin-bottom:14px}
+.feature h3{margin-bottom:8px}
+.feature p{color:#687486;font-size:15px}
+.simulator{max-width:720px;margin:auto;border:1px solid #dfe5ec;border-radius:20px;overflow:hidden;box-shadow:0 15px 45px #15233d0d}
+.chat-head{padding:18px 22px;background:#f7f9fc;font-weight:700;border-bottom:1px solid #e5e9ef}
+.chat{padding:22px;min-height:210px;background:#fff}
+.msg{max-width:82%;padding:12px 15px;border-radius:15px;margin-bottom:12px;font-size:14px}
+.user{margin-left:auto;background:#1261d6;color:#fff;border-bottom-right-radius:4px}
+.agent{background:#f0f3f7;border-bottom-left-radius:4px}
+.typing{display:none;color:#778292;font-size:13px;margin:8px 0}
+.scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:18px;border-top:1px solid #e5e9ef}
+.scenarios button,.cta{border:0;border-radius:10px;padding:12px;background:#1261d6;color:#fff;font-weight:700;cursor:pointer}
+.scenarios button:hover,.cta:hover{background:#0d4fae}
+.waitlist{text-align:center;background:#f7faff;border-top:1px solid #edf1f6}
+.waitlist p{color:#697586;margin:8px auto 20px;max-width:600px}
+.waitlist input{width:min(360px,100%);padding:13px;border:1px solid #ccd4df;border-radius:9px;margin-right:6px}
+footer{padding:32px 0;text-align:center;border-top:1px solid #e9edf2;color:#687486;font-size:14px}
+footer strong{color:#172033}
+@media(max-width:700px){
+ .compare,.features{grid-template-columns:1fr}
+ .scenarios{grid-template-columns:1fr}
+ .hero{padding-top:55px}
+ .waitlist input{margin:0 0 10px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo">Aktuaria AI</div>
+    <a href="#waitlist" class="cta">Join the Waitlist</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="avatar">∑</div>
+  <h1>Aktuaria AI</h1>
+  <p>Your AI-powered assistant for understanding actuarial concepts, solving exam questions, and preparing smarter for professional actuarial exams.</p>
+  <div class="badge">🟢 Status: Active &amp; Ready 24/7</div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-title">
+      <h2>From Exam Chaos to Clarity</h2>
+      <p>A smarter way to prepare for your actuarial journey.</p>
+    </div>
+    <div class="compare">
+      <div class="card chaos">
+        <h3>⚠️ The Chaos</h3>
+        <ul>
+          <li>Complex actuarial concepts are difficult to understand.</li>
+          <li>Finding relevant and effective practice questions takes time.</li>
+          <li>It is difficult to know what to study and whether you are exam-ready.</li>
+        </ul>
+      </div>
+      <div class="card solution">
+        <h3>✨ The Solution</h3>
+        <ul>
+          <li>Learn difficult concepts through clear, step-by-step explanations.</li>
+          <li>Practice actuarial questions with guided solutions and reasoning.</li>
+          <li>Build a structured preparation path based on your progress.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-title">
+      <h2>Core Capabilities</h2>
+      <p>Everything you need for a more structured exam preparation.</p>
+    </div>
+    <div class="features">
+      <div class="feature">
+        <div class="icon">🎓</div>
+        <h3>AI Exam Tutor</h3>
+        <p>Understand probability, statistics, financial mathematics, and actuarial concepts through interactive explanations.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🧮</div>
+        <h3>Question Solver</h3>
+        <p>Work through exam-style questions with step-by-step calculations instead of receiving only the final answer.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">📊</div>
+        <h3>Preparation &amp; Tracking</h3>
+        <p>Identify weak areas, prioritize study topics, and track your progress toward professional actuarial exams.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-title">
+      <h2>Try the AI Assistant</h2>
+      <p>Select a scenario to see how Aktuaria AI can help.</p>
+    </div>
+    <div class="simulator">
+      <div class="chat-head">🤖 Aktuaria AI · Exam Assistant</div>
+      <div class="chat" id="chat">
+        <div class="msg agent">Hello! Choose a scenario below and let's study actuarial science together.</div>
+        <div class="typing" id="typing">Aktuaria AI is thinking...</div>
+      </div>
+      <div class="scenarios">
+        <button onclick="simulate('concept')">Explain a Concept</button>
+        <button onclick="simulate('question')">Solve a Question</button>
+        <button onclick="simulate('plan')">Build a Study Plan</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="waitlist" id="waitlist">
+  <div class="container">
+    <div class="section-title">
+      <h2>Be Among the First to Try Aktuaria AI</h2>
+      <p>Join the early-access waitlist and follow the development of your future actuarial exam assistant.</p>
+    </div>
+    <form onsubmit="joinWaitlist(event)">
+      <input type="email" id="email" placeholder="Enter your email" required>
+      <button class="cta" type="submit">Join Waitlist</button>
+    </form>
+    <p id="thanks"></p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <strong>Aktuaria AI</strong> — Your AI-powered actuarial exam assistant.<br>
+    Built with AI · AI Builder Bootcamp Showcase
+  </div>
+</footer>
+
+<script>
+const replies={
+ concept:"Let’s break the concept down step by step. I’ll explain the intuition first, then the mathematical formulation, followed by a practical actuarial example.",
+ question:"Let’s solve it systematically. First, identify the relevant formula and assumptions. Then we calculate each component step by step and verify the final answer.",
+ plan:"Based on your target exam, I can organize your preparation into core concepts, practice questions, revision sessions, and progress checkpoints."
+};
+const questions={
+ concept:"Can you explain an actuarial concept I find difficult?",
+ question:"Can you help me solve this actuarial exam question?",
+ plan:"Can you help me create a structured actuarial exam study plan?"
+};
+function simulate(type){
+ const chat=document.getElementById("chat"),typing=document.getElementById("typing");
+ chat.querySelectorAll(".msg:not(:first-child)").forEach(e=>e.remove());
+ const user=document.createElement("div");
+ user.className="msg user";user.textContent=questions[type];
+ chat.insertBefore(user,typing);typing.style.display="block";
+ setTimeout(()=>{
+   typing.style.display="none";
+   const agent=document.createElement("div");
+   agent.className="msg agent";agent.textContent=replies[type];
+   chat.appendChild(agent);
+ },900);
+}
+function joinWaitlist(e){
+ e.preventDefault();
+ const email=document.getElementById("email").value;
+ document.getElementById("thanks").textContent="Thanks! "+email+" has been added to the early-access list.";
+ e.target.reset();
+}
+</script>
+</body>
+</html>
