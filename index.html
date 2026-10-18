@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,19 +7,23 @@
 <title>Aktuaria AI — Your AI Actuarial Exam Assistant</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 body{font-family:Inter,Arial,sans-serif;color:#172033;background:#fff;line-height:1.6}
 .container{max-width:1080px;margin:auto;padding:0 24px}
 header{padding:22px 0;border-bottom:1px solid #edf0f4}
-.nav{display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:22px;font-weight:800;color:#1261d6}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.logo{font-size:22px;font-weight:800;color:#1261d6;text-decoration:none}
+a{color:#1261d6}
+.cta{display:inline-block;border:0;border-radius:10px;padding:12px 18px;background:#1261d6;color:#fff;font-weight:700;text-decoration:none;cursor:pointer}
+.cta:hover,.scenarios button:hover{background:#0d4fae}
 .hero{text-align:center;padding:76px 20px 65px;background:linear-gradient(180deg,#fff,#f7faff)}
-.avatar{width:76px;height:76px;margin:0 auto 18px;border-radius:22px;background:#1261d6;color:white;display:grid;place-items:center;font-size:32px;font-weight:800;box-shadow:0 12px 30px #1261d625}
-h1{font-size:clamp(38px,7vw,64px);line-height:1.05;letter-spacing:-2px;margin-bottom:18px}
+.avatar{width:76px;height:76px;margin:0 auto 18px;border-radius:22px;background:#1261d6;color:#fff;display:grid;place-items:center;font-size:32px;font-weight:800;box-shadow:0 12px 30px #1261d625}
+h1{font-size:clamp(38px,7vw,64px);line-height:1.1;letter-spacing:-2px;margin-bottom:18px}
 .hero p{max-width:650px;margin:auto;color:#5d6878;font-size:18px}
 .badge{display:inline-block;margin-top:24px;padding:8px 15px;border:1px solid #b9e5c5;border-radius:30px;background:#f1fff4;color:#207a38;font-size:14px;font-weight:700}
 section{padding:70px 0}
 .section-title{text-align:center;margin-bottom:36px}
-.section-title h2{font-size:32px;margin-bottom:8px}
+.section-title h2{font-size:32px;line-height:1.25;margin-bottom:8px}
 .section-title p{color:#697586}
 .compare{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .card{border:1px solid #e4e8ee;border-radius:18px;padding:28px;background:#fff;box-shadow:0 8px 30px #15233d08}
@@ -26,46 +31,66 @@ section{padding:70px 0}
 .chaos{background:#fffafa;border-color:#f1dddd}
 .solution{background:#f8fbff;border-color:#dce9fa}
 ul{list-style:none}
-li{margin:12px 0;padding-left:24px;position:relative}
-li:before{content:"✓";position:absolute;left:0;font-weight:bold;color:#1261d6}
+.card li{margin:12px 0;padding-left:24px;position:relative}
+.card li:before{content:"✓";position:absolute;left:0;font-weight:bold;color:#1261d6}
 .chaos li:before{content:"×";color:#d9534f}
 .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.feature{padding:26px;border:1px solid #e5e9ef;border-radius:18px;background:#fff}
-.icon{font-size:27px;margin-bottom:14px}
+.feature{padding:26px;border:1px solid #e5e9ef;border-radius:18px}
 .feature h3{margin-bottom:8px}
 .feature p{color:#687486;font-size:15px}
+.icon{font-size:27px;margin-bottom:14px}
+/* Places directory */
+.places-section{background:#f7f9fc;border-top:1px solid #edf1f6;border-bottom:1px solid #edf1f6}
+.table-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;box-shadow:0 8px 30px #15233d08}
+.table-toolbar{padding:18px 20px;border-bottom:1px solid #e8edf3;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.table-toolbar h3{font-size:18px}
+.table-toolbar p{font-size:13px;color:#697586}
+.table-scroll{overflow-x:auto}
+#places{width:100%;border-collapse:collapse;text-align:left;font-size:14px;white-space:nowrap}
+#places th{background:#edf4ff;color:#234875;font-size:12px;text-transform:uppercase;letter-spacing:.04em;font-weight:700}
+#places th,#places td{padding:14px 16px;border-bottom:1px solid #edf0f4}
+#places tbody tr:nth-child(even){background:#f8fafc}
+#places tbody tr:hover{background:#eef5ff}
+#places tbody tr:last-child td{border-bottom:0}
+#places td:first-child{font-weight:600;color:#172033}
+#places a{display:inline-block;background:#eaf2ff;color:#1258b5;padding:6px 11px;border-radius:7px;text-decoration:none;font-weight:700}
+#places a:hover{background:#d7e7ff}
+#places .table-message{text-align:center;padding:30px;color:#697586;white-space:normal}
+.table-status{font-size:13px;color:#697586}
+.table-status.error{color:#b42318}
 .simulator{max-width:720px;margin:auto;border:1px solid #dfe5ec;border-radius:20px;overflow:hidden;box-shadow:0 15px 45px #15233d0d}
 .chat-head{padding:18px 22px;background:#f7f9fc;font-weight:700;border-bottom:1px solid #e5e9ef}
 .chat{padding:22px;min-height:210px;background:#fff}
-.msg{max-width:82%;padding:12px 15px;border-radius:15px;margin-bottom:12px;font-size:14px}
+.msg{max-width:82%;padding:12px 15px;border-radius:15px;margin-bottom:12px;font-size:14px;overflow-wrap:anywhere}
 .user{margin-left:auto;background:#1261d6;color:#fff;border-bottom-right-radius:4px}
 .agent{background:#f0f3f7;border-bottom-left-radius:4px}
 .typing{display:none;color:#778292;font-size:13px;margin:8px 0}
 .scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:18px;border-top:1px solid #e5e9ef}
-.scenarios button,.cta{border:0;border-radius:10px;padding:12px;background:#1261d6;color:#fff;font-weight:700;cursor:pointer}
-.scenarios button:hover,.cta:hover{background:#0d4fae}
+.scenarios button{border:0;border-radius:10px;padding:12px;background:#1261d6;color:#fff;font-weight:700;cursor:pointer}
 .waitlist{text-align:center;background:#f7faff;border-top:1px solid #edf1f6}
 .waitlist p{color:#697586;margin:8px auto 20px;max-width:600px}
 .waitlist input{width:min(360px,100%);padding:13px;border:1px solid #ccd4df;border-radius:9px;margin-right:6px}
+#thanks{margin-top:12px}
 footer{padding:32px 0;text-align:center;border-top:1px solid #e9edf2;color:#687486;font-size:14px}
 footer strong{color:#172033}
 @media(max-width:700px){
  .compare,.features{grid-template-columns:1fr}
  .scenarios{grid-template-columns:1fr}
  .hero{padding-top:55px}
- .waitlist input{margin:0 0 10px}
+ .section-title h2{font-size:28px}
+ .waitlist input{margin:0 0 10px;width:100%;max-width:360px}
+ .waitlist form .cta{width:100%;max-width:360px}
+ .table-toolbar{align-items:flex-start;flex-direction:column}
 }
 </style>
 </head>
 <body>
-
 <header>
   <div class="container nav">
-    <div class="logo">Aktuaria AI</div>
+    <a class="logo" href="#">Aktuaria AI</a>
     <a href="#waitlist" class="cta">Join the Waitlist</a>
   </div>
 </header>
-
 <main>
 <section class="hero">
   <div class="avatar">∑</div>
@@ -85,15 +110,15 @@ footer strong{color:#172033}
         <h3>⚠️ The Chaos</h3>
         <ul>
           <li>Complex actuarial concepts are difficult to understand.</li>
-          <li>Finding relevant and effective practice questions takes time.</li>
+          <li>Finding relevant practice questions takes time.</li>
           <li>It is difficult to know what to study and whether you are exam-ready.</li>
         </ul>
       </div>
       <div class="card solution">
         <h3>✨ The Solution</h3>
         <ul>
-          <li>Learn difficult concepts through clear, step-by-step explanations.</li>
-          <li>Practice actuarial questions with guided solutions and reasoning.</li>
+          <li>Learn difficult concepts through step-by-step explanations.</li>
+          <li>Practice actuarial questions with guided solutions.</li>
           <li>Build a structured preparation path based on your progress.</li>
         </ul>
       </div>
@@ -105,7 +130,7 @@ footer strong{color:#172033}
   <div class="container">
     <div class="section-title">
       <h2>Core Capabilities</h2>
-      <p>Everything you need for a more structured exam preparation.</p>
+      <p>Everything you need for structured exam preparation.</p>
     </div>
     <div class="features">
       <div class="feature">
@@ -116,12 +141,44 @@ footer strong{color:#172033}
       <div class="feature">
         <div class="icon">🧮</div>
         <h3>Question Solver</h3>
-        <p>Work through exam-style questions with step-by-step calculations instead of receiving only the final answer.</p>
+        <p>Work through exam-style questions with step-by-step calculations and reasoning.</p>
       </div>
       <div class="feature">
         <div class="icon">📊</div>
         <h3>Preparation &amp; Tracking</h3>
-        <p>Identify weak areas, prioritize study topics, and track your progress toward professional actuarial exams.</p>
+        <p>Identify weak areas, prioritize study topics, and track your progress toward actuarial exams.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Supabase Places Directory -->
+<section class="places-section" id="places-directory">
+  <div class="container">
+    <div class="section-title">
+      <h2>Places Directory</h2>
+      <p>Explore places and locations from our directory.</p>
+    </div>
+    <div class="table-card">
+      <div class="table-toolbar">
+        <div>
+          <h3>Places Overview</h3>
+          <p>Sorted by the highest number of reviews</p>
+        </div>
+        <div id="places-status" class="table-status" role="status" aria-live="polite">Loading places...</div>
+      </div>
+      <div class="table-scroll">
+        <table id="places">
+          <thead>
+            <tr>
+              <th>Name</th><th>Category</th><th>Rating</th>
+              <th>Reviews</th><th>City</th><th>Phone</th><th>Maps</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="table-message" colspan="7">Loading data...</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
@@ -135,14 +192,14 @@ footer strong{color:#172033}
     </div>
     <div class="simulator">
       <div class="chat-head">🤖 Aktuaria AI · Exam Assistant</div>
-      <div class="chat" id="chat">
+      <div class="chat" id="chat" aria-live="polite">
         <div class="msg agent">Hello! Choose a scenario below and let's study actuarial science together.</div>
         <div class="typing" id="typing">Aktuaria AI is thinking...</div>
       </div>
       <div class="scenarios">
-        <button onclick="simulate('concept')">Explain a Concept</button>
-        <button onclick="simulate('question')">Solve a Question</button>
-        <button onclick="simulate('plan')">Build a Study Plan</button>
+        <button type="button" onclick="simulate('concept')">Explain a Concept</button>
+        <button type="button" onclick="simulate('question')">Solve a Question</button>
+        <button type="button" onclick="simulate('plan')">Build a Study Plan</button>
       </div>
     </div>
   </div>
@@ -152,13 +209,13 @@ footer strong{color:#172033}
   <div class="container">
     <div class="section-title">
       <h2>Be Among the First to Try Aktuaria AI</h2>
-      <p>Join the early-access waitlist and follow the development of your future actuarial exam assistant.</p>
+      <p>Join the early-access waitlist and follow the development of your actuarial exam assistant.</p>
     </div>
-    <form onsubmit="joinWaitlist(event)">
-      <input type="email" id="email" placeholder="Enter your email" required>
+    <form id="waitlist-form">
+      <input type="email" id="email" placeholder="Enter your email" aria-label="Email address" required>
       <button class="cta" type="submit">Join Waitlist</button>
     </form>
-    <p id="thanks"></p>
+    <p id="thanks" role="status" aria-live="polite"></p>
   </div>
 </section>
 </main>
@@ -171,35 +228,130 @@ footer strong{color:#172033}
 </footer>
 
 <script>
-const replies={
- concept:"Let’s break the concept down step by step. I’ll explain the intuition first, then the mathematical formulation, followed by a practical actuarial example.",
- question:"Let’s solve it systematically. First, identify the relevant formula and assumptions. Then we calculate each component step by step and verify the final answer.",
- plan:"Based on your target exam, I can organize your preparation into core concepts, practice questions, revision sessions, and progress checkpoints."
-};
-const questions={
- concept:"Can you explain an actuarial concept I find difficult?",
- question:"Can you help me solve this actuarial exam question?",
- plan:"Can you help me create a structured actuarial exam study plan?"
-};
-function simulate(type){
- const chat=document.getElementById("chat"),typing=document.getElementById("typing");
- chat.querySelectorAll(".msg:not(:first-child)").forEach(e=>e.remove());
- const user=document.createElement("div");
- user.className="msg user";user.textContent=questions[type];
- chat.insertBefore(user,typing);typing.style.display="block";
- setTimeout(()=>{
-   typing.style.display="none";
-   const agent=document.createElement("div");
-   agent.className="msg agent";agent.textContent=replies[type];
-   chat.appendChild(agent);
- },900);
+// Supabase configuration
+const SUPABASE_URL = 'https://wgaevqvxiibtmalwdtyj.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_Bpv5IfSyn4mjBYE52vh5VQ_s-oNjdu9';
+
+async function loadPlaces() {
+  const tbody = document.querySelector('#places tbody');
+  const status = document.getElementById('places-status');
+  tbody.replaceChildren();
+  const loading = document.createElement('tr');
+  const loadingCell = document.createElement('td');
+  loadingCell.colSpan = 7;
+  loadingCell.className = 'table-message';
+  loadingCell.textContent = 'Loading data...';
+  loading.appendChild(loadingCell);
+  tbody.appendChild(loading);
+  status.textContent = 'Loading places...';
+  status.className = 'table-status';
+
+  try {
+    const endpoint = SUPABASE_URL +
+      '/rest/v1/places?select=*&order=reviews_count.desc.nullslast&limit=100';
+    const res = await fetch(endpoint, {
+      headers: { apikey: SUPABASE_KEY }
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const rows = await res.json();
+    tbody.replaceChildren();
+
+    if (!rows.length) {
+      const tr = tbody.insertRow();
+      const td = tr.insertCell();
+      td.colSpan = 7;
+      td.className = 'table-message';
+      td.textContent = 'No places found yet.';
+      status.textContent = '0 places found';
+      return;
+    }
+
+    for (const p of rows) {
+      const tr = document.createElement('tr');
+      for (const v of [
+        p.title, p.category_name, p.total_score,
+        p.reviews_count, p.city, p.phone
+      ]) {
+        const td = document.createElement('td');
+        td.textContent = v ?? '-';
+        tr.appendChild(td);
+      }
+
+      const mapsCell = document.createElement('td');
+      let safeUrl = null;
+      try {
+        const parsed = new URL(p.url);
+        if (parsed.protocol === 'https:') safeUrl = parsed.href;
+      } catch (_) {}
+
+      if (safeUrl) {
+        const a = document.createElement('a');
+        a.href = safeUrl;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.textContent = 'Open';
+        mapsCell.appendChild(a);
+      } else {
+        mapsCell.textContent = '-';
+      }
+      tr.appendChild(mapsCell);
+      tbody.appendChild(tr);
+    }
+    status.textContent = rows.length + ' places loaded';
+  } catch (e) {
+    tbody.replaceChildren();
+    const tr = tbody.insertRow();
+    const td = tr.insertCell();
+    td.colSpan = 7;
+    td.className = 'table-message';
+    td.textContent = 'Unable to load places. Please try again later.';
+    status.textContent = 'Could not load data';
+    status.className = 'table-status error';
+    console.error('Supabase places error:', e);
+  }
 }
-function joinWaitlist(e){
- e.preventDefault();
- const email=document.getElementById("email").value;
- document.getElementById("thanks").textContent="Thanks! "+email+" has been added to the early-access list.";
- e.target.reset();
+loadPlaces();
+
+// Interactive exam assistant demo
+const replies = {
+  concept: "Let's break the concept down step by step. I'll explain the intuition first, then the mathematical formulation, followed by a practical actuarial example.",
+  question: "Let's solve it systematically. First, identify the relevant formula and assumptions. Then calculate each component step by step and verify the final answer.",
+  plan: "Start by identifying your target exam and syllabus. Then organize your preparation into core concepts, practice questions, revision sessions, and progress checkpoints."
+};
+const questions = {
+  concept: "Can you explain an actuarial concept I find difficult?",
+  question: "Can you help me solve this actuarial exam question?",
+  plan: "Can you help me create a structured actuarial exam study plan?"
+};
+let simulationTimer;
+function simulate(type) {
+  clearTimeout(simulationTimer);
+  const chat = document.getElementById('chat');
+  const typing = document.getElementById('typing');
+  chat.querySelectorAll('.msg').forEach(el => el.remove());
+
+  const user = document.createElement('div');
+  user.className = 'msg user';
+  user.textContent = questions[type];
+  chat.insertBefore(user, typing);
+  typing.style.display = 'block';
+
+  simulationTimer = setTimeout(() => {
+    typing.style.display = 'none';
+    const agent = document.createElement('div');
+    agent.className = 'msg agent';
+    agent.textContent = replies[type];
+    chat.appendChild(agent);
+  }, 900);
 }
+
+// Waitlist preview only: no email is stored or sent yet.
+document.getElementById('waitlist-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  document.getElementById('thanks').textContent =
+    'Thanks! The waitlist form is a preview and is not connected to a registration service yet.';
+  this.reset();
+});
 </script>
 </body>
 </html>
